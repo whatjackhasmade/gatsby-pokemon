@@ -6,17 +6,22 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "d": "gatsby develop -o",
+    "dev": "gatsby develop -o",
+    "develop": "gatsby develop -o",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "npm run develop -o",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
     "gatsby": "^2.18.8",
+    "gatsby-source-filesystem": "^2.1.42",
+    "gatsby-source-graphql": "^2.1.28",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "slugify": "^1.3.6"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
