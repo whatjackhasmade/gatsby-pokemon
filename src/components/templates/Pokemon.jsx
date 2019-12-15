@@ -1,5 +1,5 @@
 import React from "react"
-import Link from "gatsby"
+import { Link } from "gatsby"
 
 export default ({ pageContext }) => {
   const {
@@ -21,14 +21,11 @@ export default ({ pageContext }) => {
     weight,
   } = pageContext
 
-  console.log(pageContext)
   return (
     <>
       <header>
         <nav>
-          <Link to="/">
-            <h3>View all pokemon</h3>
-          </Link>
+          <Link to="/">View all pokemon</Link>
           <h2>{number}</h2>//<h1>{name}</h1>
         </nav>
       </header>
@@ -48,7 +45,6 @@ export default ({ pageContext }) => {
           </div>
         )
       })}
-      {console.log(attacks)}
     </>
   )
 }
