@@ -1,51 +1,78 @@
 const path = require(`path`)
 const slugify = require(`slugify`)
 
+const imageFragment = `
+image {
+		file {
+			childImageSharp {
+				fluid {
+					base64
+					tracedSVG
+					aspectRatio
+					src
+					srcSet
+					srcWebp
+					srcSetWebp
+					sizes
+					originalImg
+					originalName
+					presentationWidth
+					presentationHeight
+				}
+			}
+		}
+	}
+`
+
+const pokemonFragment = `
+	id
+	number
+	weight {
+		minimum
+		maximum
+	}
+	height {
+		minimum
+		maximum
+	}
+	classification
+	types
+	resistant
+	attacks {
+		fast {
+			name
+			type
+			damage
+		}
+		special {
+			name
+			type
+			damage
+		}
+	}
+	weaknesses
+	fleeRate
+	maxCP
+	evolutionRequirements {
+		amount
+		name
+	}
+	maxHP
+	image
+	name
+`
+
 module.exports = async ({ actions, graphql }) => {
   const GET_POKEMON = `
   query GET_POKEMON ($first: Int!) {
 		poke {
-		pokemons(first: $first) {
-			id
-			number
-			weight {
-				minimum
-				maximum
-			}
-			height {
-				minimum
-				maximum
-			}
-			classification
-			types
-			resistant
-			attacks {
-				fast {
-					name
-					type
-					damage
-				}
-				special {
-					name
-					type
-					damage
+			pokemons(first: $first) {
+				${pokemonFragment}
+				evolutions {
+					${pokemonFragment}
 				}
 			}
-			weaknesses
-			fleeRate
-			maxCP
-			evolutions {
-				id
-			}
-			evolutionRequirements {
-				amount
-				name
-			}
-			maxHP
-			image
-			name
 		}
-	}
   }
   `
   const { createPage } = actions

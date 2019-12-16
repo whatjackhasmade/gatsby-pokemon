@@ -14,9 +14,24 @@ require(`dotenv`).config({
 })
 
 module.exports = {
-  /* Your site config here */
   plugins: [
-    // Simple config, passing URL
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/images`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-remote-images`,
+      options: {
+        nodeType: "POKE_Pokemons",
+        imagePath: "image",
+        name: "localImage",
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: "gatsby-source-graphql",
       options: {
