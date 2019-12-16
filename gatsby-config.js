@@ -30,6 +30,7 @@ module.exports = {
         name: "localImage",
       },
     },
+    `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
