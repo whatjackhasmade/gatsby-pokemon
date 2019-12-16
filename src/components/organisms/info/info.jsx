@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import Pokemon from "../../templates/Pokemon"
 
 const StyledInfo = styled.main`
   margin: 15px;
@@ -88,7 +87,7 @@ const Info = props => {
     <StyledInfo>
       <header id={id}>
         <div className="pokemon__intro">
-          <img src={image} />
+          <img src={image} alt={`Illustration of ${name}`} />
           <nav className="nav--primary">
             <Link to="/">View all pokemon</Link>
             <div className="pokemon__title">
@@ -102,7 +101,7 @@ const Info = props => {
           <nav className="pokemon__evolutions">
             {evolutions.map(evolution => (
               <Link to={evolution.name.toLowerCase()}>
-                <img src={evolution.image} />
+                <img src={evolution.image} alt={`Illustration of ${name}`} />
                 <p>{evolution.name}</p>
               </Link>
             ))}

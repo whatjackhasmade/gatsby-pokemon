@@ -1,7 +1,7 @@
 import React from "react"
 
 import "normalize.css"
-import style from "../assets/styles/style.css"
+import "../assets/styles/style.css"
 
 import useAllPokemonQuery from "../components/hooks/useAllPokemonQuery"
 
