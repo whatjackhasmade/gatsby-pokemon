@@ -1,66 +1,7 @@
 const path = require(`path`)
-const slugify = require(`slugify`)
 
-const imageFragment = `
-image {
-		file {
-			childImageSharp {
-				fluid {
-					base64
-					tracedSVG
-					aspectRatio
-					src
-					srcSet
-					srcWebp
-					srcSetWebp
-					sizes
-					originalImg
-					originalName
-					presentationWidth
-					presentationHeight
-				}
-			}
-		}
-	}
-`
-
-const pokemonFragment = `
-	id
-	number
-	weight {
-		minimum
-		maximum
-	}
-	height {
-		minimum
-		maximum
-	}
-	classification
-	types
-	resistant
-	attacks {
-		fast {
-			name
-			type
-			damage
-		}
-		special {
-			name
-			type
-			damage
-		}
-	}
-	weaknesses
-	fleeRate
-	maxCP
-	evolutionRequirements {
-		amount
-		name
-	}
-	maxHP
-	image
-	name
-`
+const fluidImage = require(`./fragments/image/fluidFragment`)
+const pokemonFragment = require(`./fragments/pokemonFragment`)
 
 module.exports = async ({ actions, graphql }) => {
   const GET_POKEMON = `
@@ -74,7 +15,8 @@ module.exports = async ({ actions, graphql }) => {
 			}
 		}
   }
-  `
+	`
+
   const { createPage } = actions
   const fetchPokemon = async variables =>
     await graphql(GET_POKEMON, variables).then(({ data }) => {
@@ -82,9 +24,8 @@ module.exports = async ({ actions, graphql }) => {
     })
   await fetchPokemon({ first: 500 }).then(allPokemon => {
     allPokemon.map(pokemon => {
-      const pagePath = slugify(pokemon.name.toLowerCase())
       actions.createPage({
-        path: pagePath,
+        path: pokemon.slug,
         component: path.resolve(`./src/components/templates/Pokemon.jsx`),
         context: {
           ...pokemon,

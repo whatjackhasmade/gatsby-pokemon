@@ -30,6 +30,7 @@ export const PokemonFragment = graphql`
     name
     number
     resistant
+    slug
     types
     weaknesses
     weight {
