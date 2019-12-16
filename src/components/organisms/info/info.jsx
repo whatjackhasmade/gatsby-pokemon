@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 import Badge from "../../atoms/badge/badge"
 
-import Attacks from "../../molecules/attacks/Attacks"
+import Attacks from "../../molecules/attacks/attacks"
 
 const StyledInfo = styled.main`
   margin: 15px;
