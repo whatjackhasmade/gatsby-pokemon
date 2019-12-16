@@ -21,32 +21,16 @@ html {
   box-sizing: inherit;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-  background-color: #af4547;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #ffffff;
-  border: 2px solid #fefefe;
-}
-
 a {
   color: rebeccapurple;
   text-decoration: none;
-
-  &:active,
-  &:focus,
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 body {
   scroll-behavior: smooth;
 
-  background-color: #af4547;
-  color: white;
+  background-color: white;
+  color: black;
   font-size: 1.6rem;
   line-height: 1.5;
 }

@@ -10,8 +10,6 @@ const StyledInfo = styled.main`
   margin: 15px;
   padding: 15px;
 
-  background-color: #df494a;
-
   a {
     color: inherit;
   }

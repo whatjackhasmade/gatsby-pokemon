@@ -15,18 +15,18 @@ const StyledTransition = styled.section`
   animation-delay: 3.4s;
 
   > div {
-    background-color: white;
+    background-color: #efefef;
     transform: translateX(-100%);
 
     animation-name: transitionAnimation;
     animation-duration: 3s;
 
     &:nth-of-type(2n) {
-      animation-delay: 0.2s;
+      animation-delay: 0.1s;
     }
 
     &:nth-of-type(3n) {
-      animation-delay: 0.4s;
+      animation-delay: 0.2s;
     }
   }
 
@@ -43,7 +43,7 @@ const StyledTransition = styled.section`
       span {
         display: inline-block;
         animation: titleFade 0.5s normal forwards ease-in-out;
-        animation-delay: 0.6s;
+        animation-delay: 0.3s;
         opacity: 0;
         transform: translateY(100%);
 

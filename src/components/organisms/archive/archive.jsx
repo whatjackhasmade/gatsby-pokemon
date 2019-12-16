@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "gatsby"
-import slugify from "slugify"
 
 import styled from "styled-components"
 
@@ -12,9 +11,6 @@ const StyledArchive = styled.section`
     grid-gap: 30px;
     grid-template-columns: repeat(6, 1fr);
     padding: 15px;
-
-    background-color: #df494a;
-    color: white;
   }
 `
 
@@ -45,7 +41,7 @@ const Archive = ({ pokemon }) => {
       <div className="grid">
         {pokemon.map(pokemon => (
           <StyledPokemonInfo>
-            <Link to={slugify(pokemon.name.toLowerCase())}>
+            <Link to={pokemon.slug}>
               <h2>{pokemon.name}</h2>
               <img src={pokemon.image} />
             </Link>
