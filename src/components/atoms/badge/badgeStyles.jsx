@@ -3,6 +3,7 @@ import styled from "styled-components"
 const typeColour = props => {
   let colour = "#6c6c4d"
   const { type } = props
+  if (!type) return colour
 
   switch (type.toLowerCase()) {
     case "normal":
