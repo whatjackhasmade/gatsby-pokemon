@@ -2,6 +2,10 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
+import Badge from "../../atoms/badge/badge"
+
+import Attacks from "../../molecules/attacks/Attacks"
+
 const StyledInfo = styled.main`
   margin: 15px;
   padding: 15px;
@@ -100,7 +104,7 @@ const Info = props => {
         {evolutions && evolutions.length && (
           <nav className="pokemon__evolutions">
             {evolutions.map(evolution => (
-              <Link to={evolution.name.toLowerCase()}>
+              <Link to={`/${evolution.slug}`}>
                 <img src={evolution.image} alt={`Illustration of ${name}`} />
                 <p>{evolution.name}</p>
               </Link>
@@ -110,9 +114,8 @@ const Info = props => {
       </header>
       {types && types.length && (
         <>
-          <p>Types</p>
           {types.map(type => (
-            <p>{type}</p>
+            <Badge type={type}>{type}</Badge>
           ))}
         </>
       )}
@@ -120,15 +123,15 @@ const Info = props => {
         <>
           <p>Resistant To</p>
           {resistant.map(resistantSingle => (
-            <p>{resistantSingle}</p>
+            <Badge type={resistantSingle}>{resistantSingle}</Badge>
           ))}
         </>
       )}
       {weaknesses && weaknesses.length && (
         <>
-          <p>Types</p>
+          <p>Weakness to</p>
           {weaknesses.map(weakness => (
-            <p>{weakness}</p>
+            <Badge type={weakness}>{weakness}</Badge>
           ))}
         </>
       )}
@@ -177,21 +180,7 @@ const Info = props => {
 
       {/* <img alt={`Illustration of ${name}`} src={image} /> */}
       <h2>Attacks</h2>
-      {attacks &&
-        Object.entries(attacks).map(([key, value]) => {
-          return (
-            <div key={`attacks-${key}`}>
-              <h3>{key}</h3>
-              {attacks[key].map(attack => (
-                <div key={attack.name}>
-                  <p>{attack.name}</p>
-                  <p>{attack.type}</p>
-                  <p>{attack.damage}</p>
-                </div>
-              ))}
-            </div>
-          )
-        })}
+      <Attacks attacks={attacks} />
     </StyledInfo>
   )
 }
