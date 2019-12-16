@@ -77,6 +77,7 @@ const StyledBadge = styled.span`
   padding: 4px 10px;
 
   background-color: ${props => typeColour(props)};
+  color: white;
 
   & + .badge {
     margin-left: 4px;
