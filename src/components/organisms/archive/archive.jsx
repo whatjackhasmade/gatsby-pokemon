@@ -135,7 +135,11 @@ const SinglePokemon = ({ focusedPokemon, index, pokemon }) => (
     <Link onFocus={e => focusedPokemon(e, index)} to={`/${pokemon.slug}`}>
       <h2>{pokemon.name}</h2>
       <div className="pokemon__image">
-        <Img fluid={pokemon.gatsbyImage.childImageSharp.fluid} alt="" />
+        <Img
+          alt={`Illustration of ${pokemon.name}`}
+          fluid={pokemon.gatsbyImage.childImageSharp.fluid}
+          placeholderStyle={{ visibility: "hidden" }}
+        />
       </div>
     </Link>
   </StyledPokemonInfo>
