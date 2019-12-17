@@ -22,13 +22,11 @@ const StyledArchive = styled.section`
   padding: 15px;
 
   .slider {
+    align-items: center;
+    display: flex;
     flex: 1;
 
-    position: absolute;
-    top: 0;
-    left: 0;
     height: 100%;
-    width: 100%;
 
     cursor: grab;
   }
@@ -37,6 +35,7 @@ const StyledArchive = styled.section`
     align-items: center;
     justify-content: center;
     display: flex !important;
+    min-height: 400px;
   }
 
   .slick-track img {
