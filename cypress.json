@@ -2,7 +2,6 @@
   "animationDistanceThreshold": 5,
   "baseUrl": "http://localhost:8000/",
   "blacklistHosts": null,
-  "browsers": ["Chrome", "Electron"],
   "chromeWebSecurity": true,
   "defaultCommandTimeout": 4000,
   "env": null,
