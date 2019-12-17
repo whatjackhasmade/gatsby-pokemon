@@ -4,8 +4,6 @@ import styled from "styled-components"
 
 import Badge from "../../atoms/badge/badge"
 
-import Attacks from "../../molecules/attacks/attacks"
-
 const StyledInfo = styled.main`
   max-width: 768px;
   margin: 15px auto;
