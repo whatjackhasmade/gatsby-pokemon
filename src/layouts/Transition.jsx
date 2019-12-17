@@ -34,7 +34,8 @@ class TransitionLayout extends React.PureComponent {
       <>
         {pageContext && pageContext.number && (
           <Transition>
-            {pageContext.number} // {pageContext.name}
+            {pageContext.number} <span className="slash--double" />
+            {pageContext.name}
           </Transition>
         )}
         <TransitionGroup>

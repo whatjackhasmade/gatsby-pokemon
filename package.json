@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
+    "ci": "start-server-and-test develop http://localhost:8000 cy:run",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "d": "gatsby develop -o",
@@ -15,9 +16,7 @@
     "start": "npm run develop -o",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open",
-    "test:e2e:ci": "start-server-and-test develop http://localhost:8000 cy:run"
+    "test": "start-server-and-test develop http://localhost:8000 cy:open",
   },
   "dependencies": {
     "@testing-library/cypress": "^5.0.2",

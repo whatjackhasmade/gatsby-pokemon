@@ -41,3 +41,7 @@ svg,
 video {
   max-width: 100%;
 }
+
+.slash--double::before {
+  content: "//";
+}

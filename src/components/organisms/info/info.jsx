@@ -104,21 +104,14 @@ const StyledInfo = styled.main`
 const Info = props => {
   const {
     attacks,
-    classification,
-    evolutionRequirements,
     evolutions,
-    fleeRate,
-    height,
     id,
     image,
-    maxCP,
-    maxHP,
     name,
     number,
     resistant,
     types,
     weaknesses,
-    weight,
   } = props
 
   return (
@@ -153,48 +146,6 @@ const Info = props => {
           </nav>
         )}
       </header>
-      {/* <p>Flee rate: {fleeRate}</p>
-      {height && (
-        <p>
-          Height:
-          {Object.entries(height).map(([key, value]) => {
-            return (
-              <React.Fragment key={`height-${key}`}>
-                <span>{key}: </span>
-                <span>{value}</span>
-              </React.Fragment>
-            )
-          })}
-        </p>
-      )}
-      {weight && (
-        <p>
-          Weight:
-          {Object.entries(weight).map(([key, value]) => {
-            return (
-              <React.Fragment key={`weight-${key}`}>
-                <span>{key}: </span>
-                <span>{value}</span>
-              </React.Fragment>
-            )
-          })}
-        </p>
-      )}
-      <p>Max CP: {maxCP}</p>
-      <p>Max HP: {maxHP}</p>
-      {evolutionRequirements && (
-        <p>
-          Evolution Requirements:
-          {Object.entries(evolutionRequirements).map(([key, value]) => {
-            return (
-              <React.Fragment key={`evolutionRequirements-${key}`}>
-                <span>{key}: </span>
-                <span>{value}</span>
-              </React.Fragment>
-            )
-          })}
-        </p>
-      )} */}
       <section className="pokemon__groups">
         {resistant && resistant.length && (
           <div>
