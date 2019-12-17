@@ -16,7 +16,7 @@
     "start": "npm run develop -o",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "start-server-and-test develop http://localhost:8000 cy:open",
+    "test": "start-server-and-test develop http://localhost:8000 cy:open"
   },
   "dependencies": {
     "@testing-library/cypress": "^5.0.2",
