@@ -2,14 +2,36 @@ import React, { useEffect, useState, useRef } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import Slider from "react-slick"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
 const settings = {
+  arrows: false,
+  centerMode: true,
   slidesToShow: 5,
   slidesToScroll: 1,
 }
 
 const StyledArchive = styled.section`
   padding: 15px;
+
+  .slick-track {
+    display: flex;
+    align-items: center;
+  }
+
+  .slick-track {
+    min-height: 100vh;
+  }
+
+  .slick-track img {
+    max-width: 60px;
+    transition: max-width 0.5s;
+  }
+
+  .slick-track .slick-center img {
+    max-width: 160px;
+  }
 `
 
 const StyledPokemonInfo = styled.div`
@@ -19,7 +41,7 @@ const StyledPokemonInfo = styled.div`
     align-items: center;
     justify-content: flex-end;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column-reverse;
     width: 100%;
 
     color: inherit;
@@ -27,8 +49,7 @@ const StyledPokemonInfo = styled.div`
   }
 
   img {
-    margin-right: 20px;
-    width: ${props => (props.inView ? `90px` : `40px`)};
+    margin-bottom: 20px;
 
     transition: 1s width ease;
   }
@@ -52,13 +73,11 @@ const Archive = ({ pokemon }) => {
 
   return (
     <StyledArchive className="archive">
-      <div>
-        <Slider ref={sliderRef} {...settings}>
-          {pokemon.map(pokemon => (
-            <SinglePokemon key={pokemon.id} pokemon={pokemon} />
-          ))}
-        </Slider>
-      </div>
+      <Slider ref={sliderRef} {...settings}>
+        {pokemon.map(pokemon => (
+          <SinglePokemon key={pokemon.id} pokemon={pokemon} />
+        ))}
+      </Slider>
     </StyledArchive>
   )
 }
