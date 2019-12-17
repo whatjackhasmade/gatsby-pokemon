@@ -12,6 +12,7 @@ import Header from "../header/header"
 const settings = {
   arrows: false,
   centerMode: true,
+  infinite: true,
   slidesToShow: 5,
   slidesToScroll: 1,
 }
@@ -67,6 +68,10 @@ const StyledPokemonInfo = styled.div`
 
     color: inherit;
     text-decoration: none;
+
+    &:focus {
+      outline-offset: 16px;
+    }
   }
 
   h2 {
@@ -103,12 +108,21 @@ const Archive = ({ pokemon }) => {
   if (!pokemon) return null
   if (!pokemon.length) return null
 
+  const focusedPokemon = (e, index) => {
+    sliderRef.current.slickGoTo(index)
+  }
+
   return (
     <StyledArchive className="archive">
       <Header />
       <Slider className="slider" ref={sliderRef} {...settings}>
-        {pokemon.map(pokemon => (
-          <SinglePokemon key={pokemon.id} pokemon={pokemon} />
+        {pokemon.map((pokemon, i) => (
+          <SinglePokemon
+            key={pokemon.id}
+            focusedPokemon={focusedPokemon}
+            index={i}
+            pokemon={pokemon}
+          />
         ))}
       </Slider>
       <Credit />
@@ -116,17 +130,15 @@ const Archive = ({ pokemon }) => {
   )
 }
 
-const SinglePokemon = ({ pokemon }) => {
-  return (
-    <StyledPokemonInfo className="pokemon">
-      <Link to={`/${pokemon.slug}`}>
-        <h2>{pokemon.name}</h2>
-        <div className="pokemon__image">
-          <Img fluid={pokemon.gatsbyImage.childImageSharp.fluid} alt="" />
-        </div>
-      </Link>
-    </StyledPokemonInfo>
-  )
-}
+const SinglePokemon = ({ focusedPokemon, index, pokemon }) => (
+  <StyledPokemonInfo className="pokemon">
+    <Link onFocus={e => focusedPokemon(e, index)} to={`/${pokemon.slug}`}>
+      <h2>{pokemon.name}</h2>
+      <div className="pokemon__image">
+        <Img fluid={pokemon.gatsbyImage.childImageSharp.fluid} alt="" />
+      </div>
+    </Link>
+  </StyledPokemonInfo>
+)
 
 export default Archive
