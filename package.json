@@ -6,17 +6,18 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "ci": "start-server-and-test develop http://localhost:8000 cy:run",
+    "ci": "start-server-and-test ciDev http://localhost:8000 cy:run",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "d": "gatsby develop -o",
     "dev": "gatsby develop -o",
     "develop": "gatsby develop -o",
+    "ciDev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop -o",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "start-server-and-test develop http://localhost:8000 cy:open"
+    "test": "start-server-and-test ciDev http://localhost:8000 cy:open"
   },
   "dependencies": {
     "@testing-library/cypress": "^5.0.2",
