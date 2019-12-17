@@ -5,6 +5,9 @@ import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
+import Credit from "../credit/credit"
+import Header from "../header/header"
+
 const settings = {
   arrows: false,
   centerMode: true,
@@ -13,30 +16,42 @@ const settings = {
 }
 
 const StyledArchive = styled.section`
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   padding: 15px;
 
-  .slick-track {
-    display: flex;
-    align-items: center;
+  .slider {
+    flex: 1;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    cursor: grab;
   }
 
-  .slick-track {
-    min-height: 100vh;
+  .slick-slide {
+    align-items: center;
+    justify-content: center;
+    display: flex !important;
   }
 
   .slick-track img {
-    max-width: 60px;
-    transition: max-width 0.5s;
+    max-height: 60px;
+    max-width: 100px;
+    transition: max-width 0.5s ease, max-height 0.5s ease;
   }
 
   .slick-track .slick-center img {
+    max-height: 160px;
     max-width: 160px;
   }
 `
 
 const StyledPokemonInfo = styled.div`
-  height: 200px;
-
   a {
     align-items: center;
     justify-content: flex-end;
@@ -73,11 +88,13 @@ const Archive = ({ pokemon }) => {
 
   return (
     <StyledArchive className="archive">
-      <Slider ref={sliderRef} {...settings}>
+      <Header />
+      <Slider className="slider" ref={sliderRef} {...settings}>
         {pokemon.map(pokemon => (
           <SinglePokemon key={pokemon.id} pokemon={pokemon} />
         ))}
       </Slider>
+      <Credit />
     </StyledArchive>
   )
 }
