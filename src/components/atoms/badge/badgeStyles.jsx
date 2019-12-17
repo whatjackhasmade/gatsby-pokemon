@@ -22,9 +22,6 @@ const typeColour = props => {
     case "normal":
       colour = "#6c6c4d"
       break
-    case "poison":
-      colour = "#a040a0"
-      break
     case "fighting":
       colour = "#aa312b"
       break

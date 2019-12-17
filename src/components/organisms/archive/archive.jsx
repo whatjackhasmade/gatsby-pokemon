@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import { Link } from "gatsby"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
@@ -15,6 +15,32 @@ const settings = {
   infinite: true,
   slidesToShow: 5,
   slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 4,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 375,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 300,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
 }
 
 const StyledArchive = styled.section`
@@ -39,7 +65,7 @@ const StyledArchive = styled.section`
     display: flex !important;
     min-height: 400px;
 
-    opacity: 0;
+    opacity: 0.2;
     transition: 1s opacity ease;
 
     &.slick-active {
@@ -99,6 +125,7 @@ const Archive = ({ pokemon }) => {
     let slickListDiv = document.getElementsByClassName("slick-list")[0]
     slickListDiv.addEventListener("wheel", event => {
       event.preventDefault()
+
       event.deltaY > 0
         ? sliderRef.current.slickNext()
         : sliderRef.current.slickPrev()

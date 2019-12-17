@@ -153,8 +153,7 @@ const Info = props => {
           </nav>
         )}
       </header>
-
-      <p>Flee rate: {fleeRate}</p>
+      {/* <p>Flee rate: {fleeRate}</p>
       {height && (
         <p>
           Height:
@@ -195,7 +194,7 @@ const Info = props => {
             )
           })}
         </p>
-      )}
+      )} */}
       <section className="pokemon__groups">
         {resistant && resistant.length && (
           <div>
