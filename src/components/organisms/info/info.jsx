@@ -7,7 +7,8 @@ import Badge from "../../atoms/badge/badge"
 import Attacks from "../../molecules/attacks/attacks"
 
 const StyledInfo = styled.main`
-  margin: 15px;
+  max-width: 768px;
+  margin: 15px auto;
   padding: 15px;
 
   a {
@@ -39,6 +40,7 @@ const StyledInfo = styled.main`
       max-height: 100px;
     }
   }
+
   .pokemon__title {
     display: flex;
 
@@ -57,6 +59,42 @@ const StyledInfo = styled.main`
     h2 {
       font-size: 24px;
     }
+  }
+
+  .pokemon__groups {
+    display: flex;
+    margin: 32px auto;
+
+    h2 {
+      margin: 0 0 8px;
+
+      text-transform: capitalize;
+    }
+
+    > div {
+      width: 48%;
+      width: calc(50% - 30px);
+    }
+
+    > div + div {
+      margin-left: 30px;
+      padding-left: 30px;
+      border-left: 1px solid grey;
+    }
+  }
+
+  .pokemonm__attacks {
+    display: flex;
+
+    > div {
+      + div {
+        margin-left: 16px;
+      }
+    }
+  }
+
+  .pokemomn__types {
+    margin-top: 8px;
   }
 
   .nav--primary {
@@ -96,7 +134,14 @@ const Info = props => {
               <h2>{number}</h2>
               <h1>{name}</h1>
             </div>
-            <p>Classification: {classification}</p>
+            {types && types.length && (
+              <div className="pokemomn__types">
+                {types.map(type => (
+                  <Badge type={type}>{type}</Badge>
+                ))}
+              </div>
+            )}
+            {/* <p>Classification: {classification}</p> */}
           </nav>
         </div>
         {evolutions && evolutions.length && (
@@ -110,29 +155,7 @@ const Info = props => {
           </nav>
         )}
       </header>
-      {types && types.length && (
-        <>
-          {types.map(type => (
-            <Badge type={type}>{type}</Badge>
-          ))}
-        </>
-      )}
-      {resistant && resistant.length && (
-        <>
-          <p>Resistant To</p>
-          {resistant.map(resistantSingle => (
-            <Badge type={resistantSingle}>{resistantSingle}</Badge>
-          ))}
-        </>
-      )}
-      {weaknesses && weaknesses.length && (
-        <>
-          <p>Weakness to</p>
-          {weaknesses.map(weakness => (
-            <Badge type={weakness}>{weakness}</Badge>
-          ))}
-        </>
-      )}
+
       <p>Flee rate: {fleeRate}</p>
       {height && (
         <p>
@@ -175,10 +198,40 @@ const Info = props => {
           })}
         </p>
       )}
-
-      {/* <img alt={`Illustration of ${name}`} src={image} /> */}
-      <h2>Attacks</h2>
-      <Attacks attacks={attacks} />
+      <section className="pokemon__groups">
+        {resistant && resistant.length && (
+          <div>
+            <h2>Resistant To</h2>
+            {resistant.map(resistantSingle => (
+              <Badge type={resistantSingle}>{resistantSingle}</Badge>
+            ))}
+          </div>
+        )}
+        {weaknesses && weaknesses.length && (
+          <div>
+            <h2>Weakness to</h2>
+            {weaknesses.map(weakness => (
+              <Badge type={weakness}>{weakness}</Badge>
+            ))}
+          </div>
+        )}
+      </section>
+      <section className="pokemon__groups">
+        {Object.entries(attacks).map(([key, value]) => (
+          <div key={`attacks-${key}`}>
+            <h2>{key} Attacks</h2>
+            <div className="pokemonm__attacks">
+              {attacks[key].map(attack => (
+                <div key={attack.name}>
+                  <p>{attack.name}</p>
+                  <Badge type={attack.type}>{attack.type}</Badge>
+                  <p>{attack.damage} damage</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
     </StyledInfo>
   )
 }
