@@ -10,5 +10,5 @@ jobs:
         uses: cypress-io/github-action@v1
         with:
           build: yarn run build
-          start: yarn start
+          start: yarn ci
           wait-on: http://localhost:8000
