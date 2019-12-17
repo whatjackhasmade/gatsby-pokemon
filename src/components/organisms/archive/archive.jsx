@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react"
 import { Link } from "gatsby"
+import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
@@ -36,17 +37,23 @@ const StyledArchive = styled.section`
     justify-content: center;
     display: flex !important;
     min-height: 400px;
+
+    opacity: 0;
+    transition: 1s opacity ease;
+
+    &.slick-active {
+      opacity: 1;
+    }
   }
 
-  .slick-track img {
-    max-height: 60px;
-    max-width: 100px;
-    transition: max-width 0.5s ease, max-height 0.5s ease;
-  }
+  .slick-track .slick-center {
+    h2 {
+      opacity: 1;
+    }
 
-  .slick-track .slick-center img {
-    max-height: 160px;
-    max-width: 160px;
+    .pokemon__image {
+      width: 160px;
+    }
   }
 `
 
@@ -62,10 +69,21 @@ const StyledPokemonInfo = styled.div`
     text-decoration: none;
   }
 
+  h2 {
+    opacity: 0;
+    transition: 1s opacity ease;
+  }
+
   img {
     margin-bottom: 20px;
 
     transition: 1s width ease;
+  }
+
+  .pokemon__image {
+    width: 60px;
+
+    transition: width 0.5s ease;
   }
 `
 
@@ -103,7 +121,9 @@ const SinglePokemon = ({ pokemon }) => {
     <StyledPokemonInfo className="pokemon">
       <Link to={`/${pokemon.slug}`}>
         <h2>{pokemon.name}</h2>
-        <img src={pokemon.image} />
+        <div className="pokemon__image">
+          <Img fluid={pokemon.gatsbyImage.childImageSharp.fluid} alt="" />
+        </div>
       </Link>
     </StyledPokemonInfo>
   )

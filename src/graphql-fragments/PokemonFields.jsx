@@ -20,6 +20,13 @@ export const PokemonFragment = graphql`
       name
     }
     fleeRate
+    gatsbyImage {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
     height {
       minimum
       maximum

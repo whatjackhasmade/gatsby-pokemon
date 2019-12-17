@@ -1,3 +1,5 @@
+const fluidFragment = require(`./image/fluidFragment`)
+
 const pokemonFragment = `
 	id
 	attacks {
@@ -18,6 +20,9 @@ const pokemonFragment = `
 		name
 	}
 	fleeRate
+	gatsbyImage {
+		${fluidFragment}
+	}
 	height {
 		minimum
 		maximum
